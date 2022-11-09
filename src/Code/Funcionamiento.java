@@ -15,6 +15,8 @@ public class Funcionamiento {
     private static String nombreJugador1;
     private static String nombreJugador2;
     private static boolean Turno1;
+    private int tipoJuego;//4 en raya, 4 en raya etc
+    private static String[][] campo;
 
     public static String[] getNombreFotos() {
         return nombreFotos;
@@ -57,4 +59,37 @@ public class Funcionamiento {
         Funcionamiento.Turno1 = Turno1;
     }
     
+    public static boolean compruebaFilas(){
+        boolean resultado = false;
+        for(String[] fila : Funcionamiento.campo){
+            resultado=Funcionamiento.compruebaFila(fila);
+            if(resultado){
+                break;
+            }
+        }
+        return resultado;
+    }
+    
+    private static boolean compruebaFila(String[] fila){
+        boolean resultado=true;
+        String valorFila=Funcionamiento.valorFila(fila);
+        for(String casilla : fila){
+            if(!valorFila.equals("inicial") && !valorFila.equals(casilla)){
+                resultado=false;
+                break;
+            }
+        }
+        return resultado;
+    
+    }
+    
+    private static String valorFila(String[] fila){
+        String resultado="inicial";
+        for(String casilla : fila){
+                if(casilla!=null){
+                    resultado=casilla;
+                }
+            }
+        return resultado;
+    }
 }
