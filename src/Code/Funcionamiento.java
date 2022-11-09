@@ -62,7 +62,7 @@ public class Funcionamiento {
     public static boolean compruebaFilas(){
         boolean resultado = false;
         for(String[] fila : Funcionamiento.campo){
-            resultado=Funcionamiento.compruebaFila(fila);
+            resultado=Funcionamiento.compruebaArray(fila);
             if(resultado){
                 break;
             }
@@ -70,9 +70,9 @@ public class Funcionamiento {
         return resultado;
     }
     
-    private static boolean compruebaFila(String[] fila){
+    private static boolean compruebaArray(String[] fila){
         boolean resultado=true;
-        String valorFila=Funcionamiento.valorFila(fila);
+        String valorFila=Funcionamiento.valorArray(fila);
         for(String casilla : fila){
             if(!valorFila.equals("inicial") && !valorFila.equals(casilla)){
                 resultado=false;
@@ -83,7 +83,7 @@ public class Funcionamiento {
     
     }
     
-    private static String valorFila(String[] fila){
+    private static String valorArray(String[] fila){
         String resultado="inicial";
         for(String casilla : fila){
                 if(casilla!=null){
@@ -91,5 +91,11 @@ public class Funcionamiento {
                 }
             }
         return resultado;
+    }
+    
+    private static String[][] ExtraeColumnas(){
+        String[][] columnas=campo;
+        
+        return columnas;
     }
 }
