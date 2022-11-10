@@ -15,7 +15,7 @@ public class Funcionamiento {
     private static String nombreJugador1;
     private static String nombreJugador2;
     private static boolean Turno1;
-    private int tipoJuego;//4 en raya, 4 en raya etc
+    private static int tipoJuego;//4 en raya, 4 en raya etc
     private static String[][] campo;
 
     public static String[] getNombreFotos() {
@@ -25,6 +25,22 @@ public class Funcionamiento {
     public static void setNombreFotos(String[] nombreFotos) {
         //recorro el la carpeta images listando elementos y los meto
         Funcionamiento.nombreFotos = nombreFotos;
+    }
+
+    public int getTipoJuego() {
+        return tipoJuego;
+    }
+
+    public void setTipoJuego(int tipoJuego) {
+        this.tipoJuego = tipoJuego;
+    }
+
+    public static String[][] getCampo() {
+        return campo;
+    }
+
+    public static void setCampo(String[][] campo) {
+        Funcionamiento.campo = campo;
     }
 
     public static boolean isEnJuego() {
@@ -95,7 +111,31 @@ public class Funcionamiento {
     
     private static String[][] ExtraeColumnas(){
         String[][] columnas=campo;
+        //es una matriz cuadrada así que la recorro entera así
+        for(int i = 0 ; i<Funcionamiento.tipoJuego; i++){
+            //recorro el array para darle valores
+            for(int j = 0 ; i<Funcionamiento.tipoJuego; i++){
+                columnas[i][j]=campo[j][i];
+            }
+        }
         
         return columnas;
+    }
+    
+    private static String[][] ExtraeDiagonales(){
+        String[][] diagonales=campo;
+        int contadorI=0;
+        int contadorJ=0;
+        //es una matriz cuadrada así que la recorro entera así
+        for(int i = 0 ; i<Funcionamiento.tipoJuego; i++){
+            //recorro el array para darle valores
+            for(int j = 0 ; i<Funcionamiento.tipoJuego; i++){
+                diagonales[i][j]=campo[contadorI][contadorJ];
+                contadorI++;
+                contadorJ++;
+            }
+        }
+        
+        return diagonales;
     }
 }
